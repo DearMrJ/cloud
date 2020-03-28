@@ -1,0 +1,21 @@
+server:
+  # consul服务端口
+  port: 8006
+spring:
+  application:
+    name: consul-provider-payment
+  cloud:
+    consul:
+      # 此consul注册中心地址
+      host: 192.168.66.66
+      port: 8500
+      discovery:
+#        hostname: 192.168.66.66 # consul 服务器主机名,默认和host一致
+        service-name: ${spring.application.name}
+#        enabled: true # 是否启用服务发现,默认true
+        prefer-ip-address: true # 默认false（在注册时使用 consul IP, 而不是 hostname），解决service Checks出问题
+
+management:
+  endpoint:
+    health:
+      show-details: always
