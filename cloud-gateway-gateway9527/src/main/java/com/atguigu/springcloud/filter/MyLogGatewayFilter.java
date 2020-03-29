@@ -29,10 +29,11 @@ public class MyLogGatewayFilter implements GlobalFilter, Ordered {
         ServerHttpRequest request = exchange.getRequest();
         String uname = request.getQueryParams().getFirst("uname");
         if (uname == null) {
-            log.info("用户名为null，非法用户");
+            log.info("用户名为null，非法用户，o(╥﹏╥)o");
             exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
             return exchange.getResponse().setComplete();
         }
+        log.info("username ==> " + request.getQueryParams().get("uname"));
         // 放行
         return chain.filter(exchange);
     }
