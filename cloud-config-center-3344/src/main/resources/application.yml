@@ -16,11 +16,11 @@ spring:
 #      username: # git 仓库用户名（公开库可以不用填写）
 #      password: # git 仓库密码（公开库可以不用填写）
 
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: 192.168.66.66
+    port: 5672
+    username: guest
+    password: guest
 
 
 eureka:
@@ -28,10 +28,9 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
 
-# 暴露bus刷新配置的端点
-
+# rabbitmq相关配置，暴露bus刷新配置的端点，因此需要actuator模块的依赖
 management:
-  endpoints:
+  endpoints:  # 暴露bus刷新配置的断电
     web:
       exposure:
         include: "bus-refresh"
