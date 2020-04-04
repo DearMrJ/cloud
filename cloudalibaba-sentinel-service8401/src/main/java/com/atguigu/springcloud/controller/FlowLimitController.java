@@ -42,21 +42,21 @@ public class FlowLimitController {
             e.printStackTrace();
         }
         log.info("testD 测试RT");
-        return "testD -----";
+        return "*-*-*-* testD *-*-*-*";
     }
 
     @GetMapping("/testException")
     public String testException(){
         log.info("testException 异常比例");
         int age = 10 /0 ;
-        return "testException -----";
+        return "*-*-*-* testException *-*-*-*";
     }
 
     @GetMapping("/testExceptionCount")
     public String testExceptionCount(){
         log.info("testExceptionCount 异常数");
         int age = 10 /0 ;
-        return "testExceptionCount -----";
+        return "*-*-*-* testExceptionCount *-*-*-*";
     }
 
     @GetMapping("/testHotKey")
@@ -64,10 +64,10 @@ public class FlowLimitController {
     public String testHotKey(@RequestParam(value = "p1", required = false) String p1,
                              @RequestParam(value = "p2", required = false) String p2){
         int age = 10 /0;
-        return "testHotKey -----";
+        return "*-*-*-* testHotKey *-*-*-*";
     }
 
     public String dealTestHotKey(String p1, String p2, BlockException blockException){
-        return "dealTestHotKey---------";
+        return "*-*-*-* dealTestHotKey *-*-*-*";
     }
 }
