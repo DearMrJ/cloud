@@ -16,7 +16,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver  # mysql驱动类
     url: jdbc:mysql://localhost:3306/db2019?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password: JKLDB!
+    password: JKLDB
 eureka:
   client:
     register-with-eureka: true  # false表示不向注册中心注册自己
