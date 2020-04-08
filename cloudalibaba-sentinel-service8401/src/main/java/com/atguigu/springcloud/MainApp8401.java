@@ -12,7 +12,18 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 public class MainApp8401 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+//        init();
         SpringApplication.run(MainApp8401.class, args);
     }
+
+//    private static void init() throws Exception {
+//        String remoteAddress = "localhost:8848";
+//        String groupId = "DEFAULT_GROUP";
+//        String dataId = "cloudalibaba-sentinel-service";
+//        Converter<String, List<FlowRule>> parser = source -> JSON.parseObject(source,new TypeReference<List<FlowRule>>() {});
+//        ReadableDataSource<String, List<FlowRule>> nacosDataSource = new NacosDataSource<>(remoteAddress, groupId, dataId, parser);
+//        FlowRuleManager.register2Property(nacosDataSource.getProperty());
+//    }
+
 }

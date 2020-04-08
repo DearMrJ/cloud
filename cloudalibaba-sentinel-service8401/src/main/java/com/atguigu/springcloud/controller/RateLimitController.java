@@ -6,6 +6,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.myhandler.CustomerBlockHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/4/3 17:29
  */
 @RestController
+@Slf4j
 public class RateLimitController {
 
     @GetMapping("/byResource")
@@ -35,7 +37,7 @@ public class RateLimitController {
 
     @GetMapping("/rateLimit/customerBlockHandler")
     @SentinelResource(value = "customerBlockHandler",
-            blockHandlerClass = CustomerBlockHandler.class, blockHandler = "handlerException2")
+            blockHandlerClass = {CustomerBlockHandler.class}, blockHandler = "handlerException2")
     public CommonResult customerBlockHandler(){
         return new CommonResult(200, "客户自定义 限流测试OK", new Payment(2020L, IdUtil.simpleUUID()));
     }

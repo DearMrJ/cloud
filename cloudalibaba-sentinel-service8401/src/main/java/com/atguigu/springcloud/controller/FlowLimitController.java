@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class FlowLimitController {
 
     @GetMapping("/testA")
-    public String testA(){
+    public String testA() {
 //        try {
 //            TimeUnit.MILLISECONDS.sleep(800);
 //        } catch (InterruptedException e) {
@@ -28,14 +28,14 @@ public class FlowLimitController {
     }
 
     @GetMapping("/testB")
-    public String testB(){
+    public String testB() {
         log.info(Thread.currentThread().getName() + "【testB】 ");
 
         return "*-*-*-* testB *-*-*-*";
     }
 
     @GetMapping("/testD")
-    public String testD(){
+    public String testD() {
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -46,28 +46,28 @@ public class FlowLimitController {
     }
 
     @GetMapping("/testException")
-    public String testException(){
+    public String testException() {
         log.info("testException 异常比例");
-        int age = 10 /0 ;
+        int age = 10 / 0;
         return "*-*-*-* testException *-*-*-*";
     }
 
     @GetMapping("/testExceptionCount")
-    public String testExceptionCount(){
+    public String testExceptionCount() {
         log.info("testExceptionCount 异常数");
-        int age = 10 /0 ;
+        int age = 10 / 0;
         return "*-*-*-* testExceptionCount *-*-*-*";
     }
 
     @GetMapping("/testHotKey")
     @SentinelResource(value = "testHotKey", blockHandler = "dealTestHotKey")
     public String testHotKey(@RequestParam(value = "p1", required = false) String p1,
-                             @RequestParam(value = "p2", required = false) String p2){
-        int age = 10 /0;
+                             @RequestParam(value = "p2", required = false) String p2) {
+//        int age = 10 / 0;
         return "*-*-*-* testHotKey *-*-*-*";
     }
 
-    public String dealTestHotKey(String p1, String p2, BlockException blockException){
-        return "*-*-*-* dealTestHotKey *-*-*-*";
+    public String dealTestHotKey(String p1, String p2, BlockException blockException) {
+        return "*-*-*-* dealTestHotKey [a fallback method for testHotKey()] *-*-*-*";
     }
 }
